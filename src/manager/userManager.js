@@ -16,7 +16,6 @@ async function getToken(user) {
 }
 
 exports.register = async (userData) =>{
-    //const {password } = userData;
     const user = await User.create(userData);
 
     const token = await getToken(user);
