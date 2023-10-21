@@ -20,8 +20,8 @@
             {{/unless}}
             <!--If user is owner-->
             {{#if isOwner}}
-            <a href="#" class="edit-btn">Edit</a>
-            <a href="#" class="delete-btn">Delete</a>
+            <a href="/offers/{{offer._id}}/edit" class="edit-btn">Edit</a>
+            <a href="/offers/{{offer._id}}/delete" class="delete-btn">Delete</a>
             {{/if}}
             {{#unless isOwner}}
             <!--If user is not the owner and is bought this toy-->
