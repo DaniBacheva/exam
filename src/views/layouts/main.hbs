@@ -25,18 +25,20 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/posts/catalog">Catalog</a></li>
                 <!--For loggin users-->
+                {{#if isAuthenticated}}
                 <li><a href="/posts/create">Create Offer</a></li>
                 <li><a href="/search">Search</a></li>
                 <li><a href="/users/logout">Logout</a></li>
                 <!--For guest user-->
+                {{else}}
                 <li><a href="/users/login">Login</a></li>
                 <li><a href="/users/register">Register</a></li>
-
+                {{/if}}
             </ul>
 
         </nav>
 
-       {{{body}}}
+        {{{body}}}
 
         <footer>@SoftUni - JS Back-End - Second Hand Electronics 2023</footer>
     </div>

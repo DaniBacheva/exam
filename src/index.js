@@ -2,7 +2,9 @@ const express = require ('express');
 const path = require  ('path');
 const handlebars = require("express-handlebars")
 const routes = require('./routes');
-const mongoose = require ('mongoose')
+const mongoose = require ('mongoose');
+const cookieParser = require('cookie-parser');
+const { auth } = require('./middleware/authMiddleware')
 
 const PORT = 3000;
 
@@ -12,11 +14,14 @@ const app = express();
 //express config
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.urlencoded({ extended: false}));
+app.use(cookieParser());
+app.use(auth)
 
 //handlebars congig
 app.engine("hbs", handlebars.engine({ extname : "hbs"}));
 app.set('view engine', 'hbs');
 app.set('views', 'src/views');
+
 
 async function dbConnect (){
     const URL ="mongodb://127.0.0.1:27017/second-hand-electronics" //localhost = 127.0.0.1
