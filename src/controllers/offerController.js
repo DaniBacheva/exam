@@ -102,5 +102,16 @@ router.post('/:offerId/edit', async(req, res) => {
     }
 })
 
+router.get('/:offerId/delete', async (req,res)=> {
+    const offerId = req.params.offerId;
+try{ 
+    await offerManager.delete(offerId);
+    res.redirect('/offers/catalog');
+}
+catch (error) {
+    res.status(400).render(`offers/${offerId}/details`, { error: getErrorMessage(error) });
+}
+})
+
 
 module.exports = router;
